@@ -18,14 +18,13 @@ class App extends Component {
   };
 
   onClick = e => {
-    console.log('clicked:: ', this.state.color);
     const { isBlack } = this.state;
 
     this.setState({
       isLoading: true,
     });
 
-    if (!isBlack) {
+    if (isBlack) {
       request.get('http://www.colr.org/json/color/random').then(res => {
         const parsedResponse = JSON.parse(res.text);
 
@@ -58,6 +57,9 @@ class App extends Component {
 
     return (
       <div className="App">
+        <div>
+          {this.state.isBlack ? '' : 'Random'} Color:: #{this.state.color}
+        </div>
         <RandomColor
           isLoading={state.isLoading}
           color={`#${state.color}`}
