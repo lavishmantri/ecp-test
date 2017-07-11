@@ -66,7 +66,11 @@ class App extends Component {
           onClick={state.isLoading ? noop : this.onClick}
           text={state.text}
         />
-        <input onChange={this.onChangeText} className="text-input" />
+        <input
+          onChange={this.onChangeText}
+          className="text-input"
+          value={state.text}
+        />
       </div>
     );
   }
